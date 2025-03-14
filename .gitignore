@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Compiled JavaScript files
+*.js
+*.js.map
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+
+# MacOS specific files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp

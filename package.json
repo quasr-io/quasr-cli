@@ -1,0 +1,23 @@
+{
+  "name": "quasr-cli",
+  "bin": {
+    "quasr-cli": "./build/quasr-cli.js"
+  },
+  "version": "0.0.0",
+  "description": "A CLI tool to interact with a Quasr tenant",
+  "main": "quasr-cli.js",
+  "scripts": {
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "axios": "^1.8.3",
+    "commander": "^13.1.0",
+    "graphql-request": "^7.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  },
+  "type": "module",
+  "license": "MIT"
+}

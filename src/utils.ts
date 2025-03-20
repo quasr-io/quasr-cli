@@ -2,9 +2,8 @@ import { request } from 'graphql-request';
 import axios from 'axios';
 
 // Function to make a GraphQL request
-export async function makeQuery(url: string, query: string, token: string): Promise<any> {
+export async function executeQuery(url: string, query: string, token: string): Promise<any> {
   try {
-
     const headers = {
       Authorization: `Bearer ${token}`,
     };

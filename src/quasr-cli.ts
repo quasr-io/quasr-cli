@@ -5,6 +5,7 @@ import attribute from './attribute/attribute.js';
 import control from './control/control.js';
 import extension from './extension/extension.js';
 import factor from './factor/factor.js';
+import tenant from './tenant/tenant.js';
 
 
 // Initialize commander
@@ -12,6 +13,7 @@ const program = new Command("quasr-cli");
 
 program
   .description('Manage a Quasr tenant')
+  .addCommand(tenant())
   .addCommand(attribute())
   .addCommand(control())
   .addCommand(extension())

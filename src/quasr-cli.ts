@@ -6,6 +6,7 @@ import control from './control/control.js';
 import extension from './extension/extension.js';
 import factor from './factor/factor.js';
 import tenant from './tenant/tenant.js';
+import source from './source/source.js'
 
 
 // Initialize commander
@@ -18,5 +19,6 @@ program
   .addCommand(control())
   .addCommand(extension())
   .addCommand(factor())
+  .addCommand(source())
 
 program.parseAsync(process.argv);

@@ -9,10 +9,6 @@ export const listAttributes = gql`
             value
             status
             subtype
-            created_at
-            created_by
-            updated_at
-            updated_by
             config {
                 require_validation_for_enablement
                 case_sensitive

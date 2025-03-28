@@ -9,10 +9,6 @@ export const listControls = gql`
             label
             value
             score
-            created_at
-            created_by
-            updated_at
-            updated_by
             config {
                 consent_required
                 permission_required

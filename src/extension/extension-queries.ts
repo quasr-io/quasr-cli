@@ -7,11 +7,6 @@ export const listExtensions = gql`
             id
             label
             status
-            created_at
-            created_by
-            updated_at
-            updated_by
-            expires_at
             config {
                 code
                 rule {

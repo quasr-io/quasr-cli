@@ -6,13 +6,13 @@
       "es2023"
     ],
     "outDir": "build",
-    "module": "node16",
+    "module": "nodenext",
     "target": "es2022",
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "nodenext",
     "types": [
       "node"
     ]

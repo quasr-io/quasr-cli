@@ -16,32 +16,31 @@ export default function setup() {
         .option('-t, --token-path <string>', 'OAuth2.0 Token path', '/oauth2/token')
         .action(async (name: string, tenantId: string, clientId: string, clientSecret: string, options: any) => {
             if (!fs.existsSync(cacheFilePath)) {
-                console.log('No tenants saved.');
-            } else {
-                const endpoint = options.endpoint;
-                const tokenPath = options.tokenPath;
-                const access_token = await getBearerToken(tenantId, endpoint, tokenPath, clientId, clientSecret);
-                const newTenant = {
-                    "name": name,
-                    "tenantId": tenantId,
-                    "clientId": clientId,
-                    "clientSecret": clientSecret,
-                    "tokenPath": tokenPath,
-                    "endpoint": endpoint,
-                    "access_token": access_token
+                fs.writeFileSync(cacheFilePath, JSON.stringify([], null, 2));
+            }
+            const endpoint = options.endpoint;
+            const tokenPath = options.tokenPath;
+            const access_token = await getBearerToken(tenantId, endpoint, tokenPath, clientId, clientSecret);
+            const newTenant = {
+                "name": name,
+                "tenantId": tenantId,
+                "clientId": clientId,
+                "clientSecret": clientSecret,
+                "tokenPath": tokenPath,
+                "endpoint": endpoint,
+                "access_token": access_token
+            }
+            try {
+                const tenants = JSON.parse(fs.readFileSync(cacheFilePath, 'utf8'));
+                if (tenants.find((tenant: any) => tenant.name === name)) {
+                    console.log('A tenant already exists with this name: ', name);
+                } else {
+                    tenants.push(newTenant);
+                    fs.writeFileSync(cacheFilePath, JSON.stringify(tenants, null, 2));
+                    console.log("Successfully added tenant: ", name);
                 }
-                try {
-                    const tenants = JSON.parse(fs.readFileSync(cacheFilePath, 'utf8'));
-                    if (tenants.find((tenant: any) => tenant.name === name)) {
-                        console.log('A tenant already exists with this name: ', name);
-                    } else {
-                        tenants.push(newTenant);
-                        fs.writeFileSync(cacheFilePath, JSON.stringify(tenants, null, 2));
-                        console.log("Successfully added tenant: ", name);
-                    }
-                } catch (error) {
-                    console.error('Error while adding a tenant :', error);
-                }
+            } catch (error) {
+                console.error('Error while adding a tenant :', error);
             }
         })
 
